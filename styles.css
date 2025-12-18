@@ -8,12 +8,24 @@
 
 .heroPage{
     min-height: 100vh;
-    background-image: url(images/LS1hero.webp);
+    background-image: url(images/white_bg.jpg);
     background-blend-mode: color;
     background-position: center;
     background-size: cover;
     position: relative;
     display: flex;
+    overflow: hidden;
+}
+
+.bgHero{
+    position: absolute;
+    align-self: center;
+    top:5rem;
+    left:50%;
+    width:100%;
+    height: auto;
+    transform: translateX(-50%);
+    overflow: hidden;
 }
 
 /* NAVBAR */
@@ -22,7 +34,7 @@
     position: fixed;
     top:0;
     width: 100%;
-    padding:1.5rem 6%;
+    padding:1rem 3%;
     align-items: center;
     z-index: 1000;
     background: transparent;
@@ -72,6 +84,7 @@
     font-family: sans-serif;
     font-size: 1.5rem;
     color:#081F3F;
+    margin-top: 1rem;
 }
 
 /* BIOGRAPHY */

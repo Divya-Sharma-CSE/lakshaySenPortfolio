@@ -4,95 +4,130 @@
     box-sizing: border-box;
 }
 
+/* HERO PAGE */
+
 .heroPage{
     min-height: 100vh;
     background-image: url(images/LS1hero.webp);
-    background-blend-mode: color;
     background-position: center;
     background-size: cover;
     position: relative;
     display: flex;
 }
 
+/* NAVBAR */
 
-.navBar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 1.2rem 5%;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Glass container */
-.navGlass{
-    width: 100%;
-    padding: 0.8rem 1.6rem;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.35);
+body{
+  font-family: Inter, sans-serif;
 }
 
-/* Brand */
-.brand{
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 0.12em;
+/* NAV WRAPPER */
+.nav{
+  position: fixed;
+  top: 24px;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
 }
 
-.brand .lakshya{
-    color: #9BB7E5; /* muted blue */
+/* FLOATING GLASS CARD */
+.nav-inner{
+  width: 92%;
+  max-width: 1400px;
+  padding: 1.1rem 1.6rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.35);
 }
 
-.brand .sen{
-    color: #FFFFFF;
-    background: rgba(255,255,255,0.25);
-    padding: 0.2rem 0.4rem;
-    margin-left: 0.3rem;
+/* LEFT LOGO */
+.logo{
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: #ffffff;
 }
 
-/* Menu Trigger */
-.menuTrigger{
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+/* RIGHT SECTION */
+.nav-right{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.menuTrigger .arrow{
-    transition: transform 0.3s ease;
+/* CHAPTERS TEXT */
+.chapters{
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: white;
+  cursor: pointer;
 }
 
-.menuTrigger:hover .arrow{
-    transform: translateY(3px);
+.chapters .arrow{
+  margin-left: 0.3rem;
+  transition: transform 0.3s ease;
+}
+
+.chapters:hover .arrow{
+  transform: translateY(3px);
+}
+
+/* HAMBURGER */
+.hamburger{
+  width: 22px;
+  height: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.hamburger span{
+  height: 2px;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
 }
 
 
-.navBar.scrolled .navGlass{
-    background: #FFFFFF;
-    backdrop-filter: none;
-    border: none;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+
+.navBar .shuttle{
+    visibility: hidden;
+    width:50px;
+    height:50px;
 }
 
-.navBar.scrolled .menuTrigger,
-.navBar.scrolled .brand .sen,
-.navBar.scrolled .brand .lakshya{
-    color: #111;
-    background: none;
+.heroPage .shuttle{
+    position: absolute;
+    bottom: -1%;
+    left:50%;
+    width:50px;
+    height:50px;
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%,100%{transform: translate(-50%,0);}
+    50%{transform: translate(-50%,-10px);}
+}
+/* BIOGRAPHY */
+.bio{
+    min-height: 100vh;
 }
