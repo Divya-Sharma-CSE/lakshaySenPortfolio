@@ -1,92 +1,98 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* GLOBAL */
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: white;
-  color: #111;
-  overflow-x: hidden;
+.heroPage{
+    min-height: 100vh;
+    background-image: url(images/LS1hero.webp);
+    background-blend-mode: color;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
 }
 
-/* HERO */
-.hero {
-  height: 100vh;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
+
+.navBar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.2rem 5%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
 }
 
-.hero-text h1 {
-  font-size: clamp(3rem, 6vw, 6rem);
-  color: #0A3D91;
-  letter-spacing: 3px;
+/* Glass container */
+.navGlass{
+    width: 100%;
+    padding: 0.8rem 1.6rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.35);
 }
 
-.hero-text p {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  color: #6E6E6E;
+/* Brand */
+.brand{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.12em;
 }
 
-/* SHUTTLE */
-.scroll-indicator {
-  position: absolute;
-  bottom: 40px;
-  cursor: pointer;
-  animation: float 2s infinite ease-in-out;
+.brand .lakshya{
+    color: #9BB7E5; /* muted blue */
 }
 
-.scroll-indicator img {
-  width: 45px;
-  transition: transform 0.3s ease, filter 0.3s ease;
+.brand .sen{
+    color: #FFFFFF;
+    background: rgba(255,255,255,0.25);
+    padding: 0.2rem 0.4rem;
+    margin-left: 0.3rem;
 }
 
-.scroll-indicator:hover img {
-  transform: translateY(6px);
-  filter: invert(23%) sepia(96%) saturate(1952%)
-          hue-rotate(202deg) brightness(85%);
+/* Menu Trigger */
+.menuTrigger{
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.35);
 }
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.menuTrigger .arrow{
+    transition: transform 0.3s ease;
 }
 
-/* CURTAIN */
-.curtain {
-  position: fixed;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: #0A3D91;
-  z-index: 999;
-  transition: top 1s cubic-bezier(.77,0,.18,1);
+.menuTrigger:hover .arrow{
+    transform: translateY(3px);
 }
 
-/* BIO */
-.bio {
-  min-height: 100vh;
-  background: #F2F4F7;
-  padding: 6rem 10%;
+
+.navBar.scrolled .navGlass{
+    background: #FFFFFF;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
-.bio h2 {
-  font-size: 3rem;
-  color: #081F3F;
-}
-
-.bio p {
-  margin-top: 1.5rem;
-  max-width: 600px;
-  font-size: 1.1rem;
-  color: #333;
+.navBar.scrolled .menuTrigger,
+.navBar.scrolled .brand .sen,
+.navBar.scrolled .brand .lakshya{
+    color: #111;
+    background: none;
 }

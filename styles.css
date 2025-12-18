@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HERO PAGE */
+
+.heroPage{
+    min-height: 100vh;
+    background-image: url(images/LS1hero.webp);
+    background-blend-mode: color;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+}
+
+/* NAVBAR */
+
+.navBar {
+    position: fixed;
+    top:0;
+    width: 100%;
+    padding:1.5rem 6%;
+    align-items: center;
+    z-index: 1000;
+    background: transparent;
+    color: white;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
+}
+
+.navBar ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    
+}
+
+.navBar .logo{
+    width: auto;
+    height: 70px;
+}
+
+.navBar.scrolled{
+    background: white;
+    
+    top:0%;
+}
+
+.navBar .shuttle{
+    visibility: hidden;
+    width:50px;
+    height:50px;
+}
+
+.heroPage .shuttle{
+    position: absolute;
+    bottom: -1%;
+    left:50%;
+    width:50px;
+    height:50px;
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%,100%{transform: translate(-50%,0);}
+    50%{transform: translate(-50%,-10px);}
+}
+
+.navBar .sections{
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    color:#081F3F;
+}
+
+/* BIOGRAPHY */
+.bio{
+    min-height: 100vh;
+}
