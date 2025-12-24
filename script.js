@@ -46,4 +46,20 @@ document.addEventListener("keydown", (e) => {
 });
 
 
+//STOP ON HOVER
+/* const statsBox = document.querySelector(".statsNoHover");
+
+function stop(){
+    statsBox.addEventListener("mouseover", () => {
+        statsBox.classList.remove("statsNoHover");
+        statsBox.classList.add("statsHover")
+    });
+};
+
+function reset(){
+    statsBox.addEventListener("mouseover", () => {
+        statsBox.classList.remove("statsHover");
+        statsBox.classList.add("statsNoHover")
+    });
+} */
 

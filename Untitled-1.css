@@ -1,207 +1,54 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* HERO PAGE */
-
-.heroPage{
-    min-height: 100vh;
-    background-image: url(images/LS1hero.webp);
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    display: flex;
-}
-
-/* NAVBAR */
-
-*{
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body{
-  font-family: Inter, sans-serif;
-}
-
-/* NAV WRAPPER */
-.nav{
-  position: fixed;
-  top: 24px;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-}
-
-/* FLOATING GLASS CARD */
-.nav-inner{
-  width: 92%;
-  max-width: 1400px;
-  padding: 1.1rem 1.6rem;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.35);
-}
-
-/* LEFT LOGO */
-.logo{
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  color: #ffffff;
-}
-
-/* RIGHT SECTION */
-.nav-right{
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-/* CHAPTERS TEXT */
-.chapters{
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  background: black;
   color: white;
-  cursor: pointer;
+  font-family: sans-serif;
+  overflow: hidden;
 }
 
-.chapters .arrow{
-  margin-left: 0.3rem;
-  transition: transform 0.3s ease;
-}
-
-.chapters:hover .arrow{
-  transform: translateY(3px);
-}
-
-/* HAMBURGER */
-.hamburger{
-  width: 22px;
-  height: 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.hamburger span{
-  height: 2px;
-  width: 100%;
-  background: white;
-  border-radius: 2px;
-}
-
-
-
-.navBar .shuttle{
-    visibility: hidden;
-    width:50px;
-    height:50px;
-}
-
-.heroPage .shuttle{
-    position: absolute;
-    bottom: -1%;
-    left:50%;
-    width:50px;
-    height:50px;
-    animation: float 2s infinite ease-in-out;
-}
-
-@keyframes float {
-    0%,100%{transform: translate(-50%,0);}
-    50%{transform: translate(-50%,-10px);}
-}
-/* BIOGRAPHY */
-.bio{
-    min-height: 100vh;
-}
-
-
-/* OVERLAY */
-.menu-overlay{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(4px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-  z-index: 1500;
-}
-
-/* SIDE MENU */
-.side-menu{
-  position: fixed;
-  top: 0;
-  right: 0;
-
-  width: 30%;
-  min-width: 320px;
+.layout {
+  display: grid;
+  grid-template-columns: 40% 60%;
   height: 100vh;
-
-  background: #0a1a2f; /* deep sports blue */
-  color: white;
-
-  transform: translateX(100%);
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-
-  z-index: 1600;
-  padding: 4rem 3rem;
 }
 
-/* MENU CONTENT */
-.side-nav{
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+/* LEFT PANEL */
+.left {
+  z-index: 10;
+  padding: 4rem;
+  background: black;
 }
 
-.side-nav a{
-  font-size: 1.4rem;
-  letter-spacing: 0.12em;
-  text-decoration: none;
-  color: white;
-  font-family: "Bebas Neue", sans-serif;
+/* RIGHT PANEL */
+.right {
   position: relative;
+  overflow: hidden;
 }
 
-.side-nav a::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: #4da3ff;
-  transition: width 0.3s ease;
-}
-
-.side-nav a:hover::after{
+.marquee {
   width: 100%;
+  overflow: hidden;
 }
 
-/* ACTIVE STATES */
-.menu-open .menu-overlay{
-  opacity: 1;
-  pointer-events: auto;
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 22s linear infinite;
 }
 
-.menu-open .side-menu{
-  transform: translateX(0);
+.item {
+  min-width: 260px;
+  margin-right: 3rem;
+  font-size: 2rem;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
