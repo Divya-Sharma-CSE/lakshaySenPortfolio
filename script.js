@@ -3,8 +3,8 @@ const nav = document.querySelector(".shuttle");
 
 nav.addEventListener("click", () => {
     const shuttle = document.querySelector(".heroShuttle");
-    const bio = document.querySelector(".bio");
-    bio.scrollIntoView({ behavior: "smooth", block: "start" });
+    const quote = document.querySelector(".quotePage");
+    quote.scrollIntoView({ behavior: "smooth", block: "start" });
 
     shuttle.style.visibility = "visible";
 
