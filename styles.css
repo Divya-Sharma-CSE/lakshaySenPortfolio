@@ -292,3 +292,151 @@
     width:70%;
 
 }
+
+/* TIMELINE SECTION */
+.timeline{
+    background-color: #071018;
+    min-height: 100vh;
+    color: #DCE0E8;
+    display: flex;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.timelineHeading{
+    text-align: center;
+    padding: 10vh 2rem 5vh;
+    max-width: 800px;
+}
+
+.timelineHeading h3{
+    font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+.timelineHeading p{
+    font-size: clamp(1rem, 2vw, 1.125rem);
+}
+
+.timelineWrapper{
+    position: relative;
+    max-width: 1000px;
+    height:100%;
+    margin: 0 auto;
+    padding: 5vh 2rem 20vh;
+}
+
+.timelineLine{
+    position: absolute;
+    top:0;
+    background-color:#222222;
+    z-index:1;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.timelineLineProgress{
+    width:100%;
+    height:100%;
+    background: linear-gradient(to bottom, rgba(74, 144, 226, 0.5), #ffffff);
+    transform-origin:top;
+    transform: scaleY(0);                   /* Initially hidden */
+    animation: fill-line linear forwards;                                                /* forwards = keep the final state */
+    animation-timing-function: scroll(timeline);
+}
+
+.timelineSection:nth-child(even) {
+    justify-content: flex-end;
+}
+
+.timelineMarker{
+    position: absolute;
+    top:0;
+    left:50%;
+    transform: translateX(-50%);
+    width:18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #222222;
+    background-color: #071018;
+    z-index:3;
+    transition: background-color 0.3s, border-color 0.3s;
+    /* Animate marker when it's in the middle of the screen */
+    animation: light-up linear forwards;
+    animation-timing-function: view();
+    animation-range: contain 40% contain 60%;                               
+    /* Nothing happens when it first appears | It animates near the center of the screen */
+
+}
+
+.timelineContent{
+    width: calc(50% -40px);                                 /*  box   80px(for line and marker)   box  */
+    padding:2rem;
+    background-color: rgba(15, 25, 40, 0.55);
+    border-radius: 12px;
+    border: 1px solid rgba(180, 200, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    /* Animate when in view */
+    animation: fade-in-up linear forwards;
+    animation-timing-function: view();
+    animation-range: entry 20% cover 50%;
+}
+
+.timelineSection:nth-child(even) .timelineContent {
+  text-align: left;
+}
+
+.timelineYear{
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    font-weight: 500;
+    color: #ffffff;
+    /* margin-bottom */
+
+}
+
+.timelineTitle{
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    font-weight:300;
+}
+
+/* ANIMATIONS SPECIFIED */
+@keyframes fill-line {
+    to{
+        transform:scaleY(1);
+    }
+}
+
+@keyframes light-up {
+    from,
+    to{
+        border-color:#222222 ;
+        background-color: #071018;
+        box-shadow: none;
+    }
+    50%{
+        border-color: #ffffff;
+        background-color: #ffffff;
+        box-shadow: 0 0 15px 5px rgba(74, 144, 226, 0.5);
+    }
+
+    100%{
+        border-color: #ffffff;
+        background-color: #ffffff;
+        box-shadow: 0 0 15px 5px rgba(74, 144, 226, 0.5);
+    }
+}
+
+@keyframe fade-in-up{
+    from{
+        opacity:0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
