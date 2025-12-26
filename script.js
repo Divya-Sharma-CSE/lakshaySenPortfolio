@@ -82,4 +82,80 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   observer.observe(statsSection);
+
+
 });
+
+
+
+function createBarChart() {
+    const ctx = document.getElementById('titlesChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['2019', '2021', '2022', '2024', '2025'],
+            datasets: [{
+                label: 'Titles Won',
+                data: [2, 3, 1, 1, 1],
+                backgroundColor: '#4A90E2',
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            animation: {
+                duration: 1500,
+                easing: 'easeOutQuart'
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+let barChartCreated = false;
+
+const statsSection = document.getElementById('stats2');
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !barChartCreated) {
+                statsSection.classList.add('visible');
+                createBarChart();
+                barChartCreated = true; // prevent re-creation
+            }
+        });
+    },
+    {
+        threshold: 0.6   // 👈 60% visibility
+    }
+);
+
+observer.observe(statsSection);
+
+
+
+
+function sortTable(colIndex) {
+  const table = document.getElementById("achievementsTable");
+  const tbody = table.tBodies[0];
+  const rows = Array.from(tbody.rows);
+
+  const asc = table.dataset.sort !== "asc";
+  table.dataset.sort = asc ? "asc" : "desc";
+
+  rows.sort((a, b) => {
+    const A = a.cells[colIndex].innerText;
+    const B = b.cells[colIndex].innerText;
+    return asc ? A.localeCompare(B, undefined, {numeric:true}) 
+               : B.localeCompare(A, undefined, {numeric:true});
+  });
+
+  rows.forEach(row => tbody.appendChild(row))};
+
+

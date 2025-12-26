@@ -500,24 +500,41 @@
 
 
 /* STATS AND ACHIEVEMENT SECTION */
-.statsSection{
+.statsAndAchievement{
     min-height: 100vh;
     background-image: url(images/white_bg.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.statsContainer{
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statsSection, .statsSection2{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.statsSection h2{
-    font-size: 2.5rem;
+.statsSection h2, .statsSection2 h2{
+    font-size: 2.3rem;
     font-family: 'Inter' , sans-serif;
 }
 
-.statsSection h3{
-    font-size: 2rem;
+.statsSection h3, .statsSection2 h3{
+    font-size: 1.8rem;
     font-family: 'Playfair Display', sans-serif;
     font-style: italic;
     font-weight: 400;
     margin-bottom: 2rem;
+}
+
+.statsSection2 .chartBox {
+    width: 600px;
 }

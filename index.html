@@ -213,13 +213,50 @@
         </div>
     </section>
 
-    <section class="statsSection" id="stats">
-        <h2 class="statsHeading">Match Performance</h2>
-        <h3 class="statsHeading">: Win-Loss Efficiency</h3>
-    <div class="chartBox">
-        <canvas id="winsChart" width = "500" height="500"></canvas>         <!--Drawing Area for chart.js-->
-    </div>
+    <section class="statsAndAchievement">
+        <section class="statsContainer">
+            <!--Pie Chart-->
+            <section class="statsSection" id="stats">
+            <h2 class="statsHeading">Match Performance</h2>
+            <h3 class="statsHeading">Win-Loss Efficiency</h3>
+            <div class="chartBox">
+                <canvas id="winsChart" width = "400" height="400"></canvas>         <!--Drawing Area for chart.js-->
+            </div>
+            </section>
+
+            <!--line graph-->
+            <section class="statsSection2" id="stats2">
+            <h2 class="statsHeading">Championship Legacy</h2>
+            <h3 class="statsHeading">Titles Over Time</h3>
+            <div class="chartBox">
+            <canvas id="titlesChart" width="600" ></canvas>
+            </div>
+            
+            <!--
+                        
+            <div class="tableWrapper">
+                <table id="achievementsTable">
+                <thead>
+                    <tr>
+                    <th onclick="sortTable(0)">Year ⬍</th>
+                    <th onclick="sortTable(1)">Tournament ⬍</th>
+                    <th onclick="sortTable(2)">Result ⬍</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>2022</td><td>All England Open</td><td>Finalist</td></tr>
+                    <tr><td>2022</td><td>India Open</td><td>Winner</td></tr>
+                    <tr><td>2024</td><td>Paris Olympics</td><td>4th Place</td></tr>
+                    <tr><td>2021</td><td>World Championships</td><td>Bronze</td></tr>
+                </tbody>
+                </table>
+            </div>    -->
+            </section>
+        </section>
+
     </section>
+
+
 
 
     <!--SCRIPT-->

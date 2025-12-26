@@ -1,48 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Animated Pie Chart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakshya Sen</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geom:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+
+
+
 </head>
-<body style="background:#071018; display:flex; justify-content:center; align-items:center; height:100vh;">
+<body>
+<section class="statsAchievements" id="stats">
 
-  <canvas id="winsChart" width="300" height="300"></canvas>
+  <h2 class="sectionTitle">Stats & Achievements</h2>
 
-  <!-- Chart.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- VISUAL STAT CARDS -->
+  <div class="statsCards">
+    <div class="statCard">
+      <img src="icons/win.svg" alt="">
+      <h3 data-target="226">0</h3>
+      <p>Total Wins</p>
+    </div>
 
-  <script>
-    const ctx = document.getElementById('winsChart');
+    <div class="statCard">
+      <img src="icons/trophy.svg" alt="">
+      <h3 data-target="9">0</h3>
+      <p>International Titles</p>
+    </div>
 
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Wins', 'Losses'],
-        datasets: [{
-          data: [226, 123],
-          backgroundColor: ['#4A90E2', '#1f2f44'],
-          borderWidth: 0
-        }]
-      },
-      options: {
-        cutout: '65%',
-        animation: {
-          animateRotate: true,
-          animateScale: true,
-          duration: 1200,
-          easing: 'easeOutQuart'
-        },
-        plugins: {
-          legend: {
-            labels: {
-              color: '#DCE0E8',
-              font: { size: 14 }
-            }
-          }
-        }
-      }
-    });
-  </script>
+    <div class="statCard">
+      <img src="icons/ranking.svg" alt="">
+      <h3 data-target="6">0</h3>
+      <p>Highest Ranking</p>
+    </div>
+  </div>
+
+    <div class="chartBox">
+      <canvas id="titlesChart"></canvas>
+    </div>
+  </div>
+
+  <!-- SORTABLE TABLE -->
+  <div class="tableWrapper">
+    <table id="achievementsTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Year ⬍</th>
+          <th onclick="sortTable(1)">Tournament ⬍</th>
+          <th onclick="sortTable(2)">Result ⬍</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>2022</td><td>All England Open</td><td>Finalist</td></tr>
+        <tr><td>2022</td><td>India Open</td><td>Winner</td></tr>
+        <tr><td>2024</td><td>Paris Olympics</td><td>4th Place</td></tr>
+        <tr><td>2021</td><td>World Championships</td><td>Bronze</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+const titlesCtx = document.getElementById('titlesChart');
+
+new Chart(titlesCtx, {
+  type: 'bar',
+  data: {
+    labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+    datasets: [{
+      label: 'Titles',
+      data: [1, 1, 1, 4, 1, 1],
+      backgroundColor: '#4A90E2'
+    }]
+  }
+});
+
+function sortTable(colIndex) {
+  const table = document.getElementById("achievementsTable");
+  const tbody = table.tBodies[0];
+  const rows = Array.from(tbody.rows);
+
+  const asc = table.dataset.sort !== "asc";
+  table.dataset.sort = asc ? "asc" : "desc";
+
+  rows.sort((a, b) => {
+    const A = a.cells[colIndex].innerText;
+    const B = b.cells[colIndex].innerText;
+    return asc ? A.localeCompare(B, undefined, {numeric:true}) 
+               : B.localeCompare(A, undefined, {numeric:true});
+  });
+
+  rows.forEach(row => tbody.appendChild(row));
+}
+</script>
 
 </body>
 </html>
