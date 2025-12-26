@@ -12,6 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Geom:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
 
 
 </head>
@@ -113,69 +117,65 @@
             <h3>Career Timeline</h3>
             <p>Lakshya Sen’s career is a classic "prodigy-to-powerhouse" story.</p>
         </div>
-    
+
+    <!--timeline-wrapper-->
         <div class="timelineWrapper">
             <div class="timelineLine">
                 <div class="timelineLineProgress"></div>
             </div>
-    <!--boxes-->
+        <!--boxes-->
             <div class="timelineSection">
-                <div class="timelineMarker">
+                <div class="timelineMarker"></div>
                     <div class="timelineContent">
                         <div class="timelineYear">2009–2014</div>
                         <h3 class="timelineTitle">The Prodigy Begins</h3>
                         <p>At just 9 years old, Lakshya joined the Prakash Padukone Badminton Academy in Bengaluru. 
                             By 2014, he had already secured his first international title at the Swiss Junior International.</p>
                     </div>
-                </div>
             </div>
 
-            <div class="timelineWrapper">
-                <div class="timelineMarker">
+            <div class="timelineSection">
+                <div class="timelineMarker"></div>
                     <div class="timelineContent">
                         <div class="timelineYear">2016–2017</div>
-                        <h3>Junior World No. 1</h3>
+                        <h3 class="timelineTitle">Junior World No. 1</h3>
                         <p>In 2016, at age 15, he became the youngest player to reach the finals of the Senior National Championship. 
                             In February 2017, he officially attained the BWF World Junior No. 1 ranking.</p>
                     </div>
-                </div>
             </div>
 
-            <div class="timelineWrapper">
-                <div class="timelineMarker">
+            <div class="timelineSection">
+                <div class="timelineMarker"></div>
                     <div class="timelineContent">
                         <div class="timelineYear">2018</div>
                         <h3 class="timelineTitle">Global Breakthrough</h3>
                         <p>A golden year where he became the Asian Junior Champion (the first Indian to do so in 53 years). 
                             He capped off his junior career with a Silver at the Youth Olympics and a Bronze at the World Junior Championships.</p>
                     </div>
-                </div>
             </div>
 
-            <div class="timelineWrapper">
-                <div class="timelineMarker">
+            <div class="timelineSection">
+                <div class="timelineMarker"></div>
                     <div class="timelineContent">
                         <div class="timelineYear">2019</div>
                         <h3 class="timelineTitle">Senior Transition</h3>
                         <p>Lakshya made a seamless leap to the senior circuit, winning five titles in a single year, 
                             including his first BWF World Tour titles at the Dutch Open and the SaarLorLux Open.</p>
                     </div>
-                </div>
             </div>
 
-            <div class="timelineWrapper">
-                <div class="timelineMarker">
+            <div class="timelineSection">
+                <div class="timelineMarker"></div>
                     <div class="timelineContent">
                         <div class="timelineYear">2021</div>
                         <h3 class="timelineTitle">World Championship Medal</h3>
                         <p>He announced his arrival at the elite level by winning a Bronze at the BWF World Championships, 
                             becoming one of the youngest Indians to ever medal at the event.</p>
                     </div>
-                </div>
-
             </div>
-            <div class="timelineWrapper">
-                <div class="timelineMarker">
+
+            <div class="timelineSection">
+                <div class="timelineMarker"></div>
                     <div class="timelineContent">
                         <div class="timelineYear">2022</div>
                         <h3 class="timelineTitle">Year of Glory</h3>
@@ -186,29 +186,26 @@
                             <li>Won Gold at the Commonwealth Games.</li>
                         </ul></p>
                     </div>
-                </div>
             </div>
             
-            <div class="timelineWrapper">
-                <div class="timelineMarker">
+            <div class="timelineSection">
+                <div class="timelineMarker"></div>
                     <div class="timelineContent">
                         <div class="timelineYear">2024</div>
                         <h3 class="timelineTitle">Olympic History</h3>
                         <p>At the Paris 2024 Olympics, he became the first Indian male shuttler to reach an Olympic semi-final, 
                             ultimately finishing in a hard-fought 4th place.</p>
                     </div>
-                </div>
             </div>
 
-            <div class="timelineWrapper">
-                <div class="timelineMarker">
+            <div class="timelineSection">
+                <div class="timelineMarker"></div>
                     <div class="timelineContent">
                         <div class="timelineYear">2025</div>
                         <h3 class="timelineTitle">Continued Dominance</h3>
                         <p>Lakshya remains a top contender, 
                             recently clinching the 2025 Australian Open title and reaching the finals of the Hong Kong Open.</p>
                     </div>
-                </div>
             </div>
 
             
@@ -216,7 +213,18 @@
         </div>
     </section>
 
+    <section class="statsSection" id="stats">
+        <h2 class="statsHeading">Match Performance</h2>
+        <h3 class="statsHeading">: Win-Loss Efficiency</h3>
+    <div class="chartBox">
+        <canvas id="winsChart" width = "500" height="500"></canvas>         <!--Drawing Area for chart.js-->
+    </div>
+    </section>
+
+
     <!--SCRIPT-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>

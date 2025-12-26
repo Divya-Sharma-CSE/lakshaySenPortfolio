@@ -1,54 +1,324 @@
-body {
+/* --- Base Styles & Variables --- */
+:root {
+  --bg-color: #0a0a0a;
+  --text-color: #d1d1d1;
+  --primary-color: #ffffff;
+  --accent-glow: rgba(74, 144, 226, 0.5);
+  --line-color: #222222;
+  --card-bg: rgba(20, 20, 20, 0.5);
+  --card-border: rgba(255, 255, 255, 0.1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  background: black;
-  color: white;
-  font-family: sans-serif;
-  overflow: hidden;
+  padding: 0;
 }
 
-.layout {
-  display: grid;
-  grid-template-columns: 40% 60%;
-  height: 100vh;
+html {
+  scroll-behavior: smooth;
 }
 
-/* LEFT PANEL */
-.left {
-  z-index: 10;
-  padding: 4rem;
-  background: black;
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: radial-gradient(
+      circle at 10% 10%,
+      rgba(255, 255, 255, 0.04),
+      transparent 30%
+    ),
+    radial-gradient(circle at 90% 80%, rgba(74, 144, 226, 0.1), transparent 40%);
 }
 
-/* RIGHT PANEL */
-.right {
+/* --- Page Header for Context --- */
+.page-header {
+  text-align: center;
+  padding: 10vh 2rem 5vh;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-header h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--primary-color);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.page-header p {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.scroll-hint {
+  margin-top: 3rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scroll-hint svg {
+  animation: bounce 2s infinite ease-out;
+}
+
+/* --- Main Timeline Container --- */
+.timeline-wrapper {
   position: relative;
-  overflow: hidden;
-}
-
-.marquee {
   width: 100%;
-  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 5vh 2rem 20vh; /* Extra padding at the bottom */
 }
 
-.track {
+/* --- The Central Timeline Line (with scroll-driven progress) --- */
+.timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background-color: var(--line-color);
+  z-index: 1;
+}
+
+.timeline-line-progress {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--accent-glow),
+    var(--primary-color)
+  );
+  transform-origin: top;
+  transform: scaleY(0); /* Initially hidden */
+
+  /* The magic: Link animation to scroll progress */
+  animation: fill-line linear forwards;
+  animation-timeline: scroll(root);
+}
+
+/* --- Individual Timeline Section --- */
+.timeline-section {
+  position: relative;
+  z-index: 2;
   display: flex;
-  width: max-content;
-  animation: scroll 22s linear infinite;
+  justify-content: flex-start;
+  padding: 4rem 0;
+  min-height: 300px;
 }
 
-.item {
-  min-width: 260px;
-  margin-right: 3rem;
-  font-size: 2rem;
-  white-space: nowrap;
+/* Alternate layout for even sections */
+.timeline-section:nth-child(even) {
+  justify-content: flex-end;
+}
+
+/* --- The Dot on the Timeline --- */
+.timeline-marker {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background-color: var(--bg-color);
+  border: 2px solid var(--line-color);
+  border-radius: 50%;
+  z-index: 3;
+  transition: background-color 0.3s, border-color 0.3s;
+
+  /* Animate marker when it's in the middle of the screen */
+  animation: light-up linear forwards;
+  animation-timeline: view();
+  animation-range: contain 40% contain 60%;
+}
+
+/* --- Content Card --- */
+.timeline-content {
+  width: calc(50% - 40px);
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  /* Animate content as it enters the viewport */
+  animation: fade-in-up linear forwards;
+  animation-timeline: view();
+  animation-range: entry 20% cover 50%;
+}
+
+.timeline-section:nth-child(even) .timeline-content {
+  text-align: left;
+}
+
+.timeline-year {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.timeline-title {
+  font-size: clamp(1.5rem, 4vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  line-height: 1.2;
+}
+
+.timeline-description {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes fill-line {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes light-up {
+  from,
+  to {
+    border-color: var(--line-color);
+    background-color: var(--bg-color);
+    box-shadow: none;
+  }
+  50% {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    box-shadow: 0 0 15px 5px var(--accent-glow);
+  }
+  100% {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    box-shadow: 0 0 15px 5px var(--accent-glow);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .timeline-wrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .timeline-line {
+    left: 20px;
+    transform: none;
+  }
+
+  .timeline-marker {
+    left: 20px;
+    transform: none;
+  }
+
+  .timeline-section,
+  .timeline-section:nth-child(even) {
+    justify-content: flex-start;
+    padding-left: 40px;
+  }
+
+  .timeline-content,
+  .timeline-section:nth-child(even) .timeline-content {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+
+.statsSection {
+  background: #071018;
+  color: #DCE0E8;
+  padding: 12vh 2rem;
+}
+
+.statsHeading {
+  text-align: center;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 4rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto 6rem;
+}
+
+.statCard {
+  background: rgba(15, 25, 40, 0.55);
+  border: 1px solid rgba(180, 200, 255, 0.12);
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-8px);
+}
+
+.statCard h3 {
+  font-size: 3rem;
+  color: #ffffff;
+}
+
+.statCard p {
   opacity: 0.8;
 }
 
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+.chartsGrid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  gap: 4rem;
 }

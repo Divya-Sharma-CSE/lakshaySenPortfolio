@@ -46,20 +46,40 @@ document.addEventListener("keydown", (e) => {
 });
 
 
-//STOP ON HOVER
-/* const statsBox = document.querySelector(".statsNoHover");
+/* PIE CHART */
+document.addEventListener('DOMContentLoaded', () => {
 
-function stop(){
-    statsBox.addEventListener("mouseover", () => {
-        statsBox.classList.remove("statsNoHover");
-        statsBox.classList.add("statsHover")
-    });
-};
+  const statsSection = document.getElementById('stats');
+  const ctx = document.getElementById('winsChart');
 
-function reset(){
-    statsBox.addEventListener("mouseover", () => {
-        statsBox.classList.remove("statsHover");
-        statsBox.classList.add("statsNoHover")
-    });
-} */
+  const chart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Wins', 'Losses'],
+      datasets: [{
+        data: [0, 0],                       // start empty
+        backgroundColor: ['#4A90E2', '#1f2f44'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      cutout: '65%',
+      animation: {
+        duration: 1500,
+        easing: 'easeOutQuart'
+      }
+    }
+  });
 
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      chart.data.datasets[0].data = [64.8, 35.2];
+      chart.update();
+      observer.disconnect();               // run once
+    }
+  }, {
+    threshold: 0.6
+  });
+
+  observer.observe(statsSection);
+});

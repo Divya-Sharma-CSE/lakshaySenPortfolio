@@ -200,16 +200,18 @@
 
 .bioWBackground{
     background-image: url(images/white_bg.jpg);
+
 }
 
 .bio{
-    min-height: 100vh;
+    min-height: 50vh;
     display: grid;
     grid-template-columns: 30% 70%;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     z-index:50;
+    padding-bottom:2rem;
 }
 
 .bioName{
@@ -294,11 +296,12 @@
 }
 
 /* TIMELINE SECTION */
+
 .timeline{
     background-color: #071018;
     min-height: 100vh;
     color: #DCE0E8;
-    display: flex;
+    font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -307,52 +310,70 @@
     text-align: center;
     padding: 10vh 2rem 5vh;
     max-width: 800px;
+    margin: 0 auto 3rem auto;
 }
 
 .timelineHeading h3{
     font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1rem;
 }
 
 .timelineHeading p{
     font-size: clamp(1rem, 2vw, 1.125rem);
+    margin: 0 auto;
+    max-width: 600px;
 }
 
 .timelineWrapper{
     position: relative;
     max-width: 1000px;
     height:100%;
+    width:100%;
     margin: 0 auto;
     padding: 5vh 2rem 20vh;
+
 }
 
 .timelineLine{
     position: absolute;
     top:0;
+    width: 2px;
+    height: 100%;
     background-color:#222222;
     z-index:1;
     left:50%;
     transform: translateX(-50%);
 }
 
-.timelineLineProgress{
+.timelineLineProgress{ 
     width:100%;
     height:100%;
     background: linear-gradient(to bottom, rgba(74, 144, 226, 0.5), #ffffff);
     transform-origin:top;
     transform: scaleY(0);                   /* Initially hidden */
     animation: fill-line linear forwards;                                                /* forwards = keep the final state */
-    animation-timing-function: scroll(timeline);
+    animation-timeline: scroll(timeline);
+}
+
+.timelineSection {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-start;
+  padding: 4rem 0;
+  min-height: 300px;
 }
 
 .timelineSection:nth-child(even) {
     justify-content: flex-end;
 }
 
+
 .timelineMarker{
     position: absolute;
-    top:0;
+    top:50%;
     left:50%;
-    transform: translateX(-50%);
+    transform: translate(-50%,-50%);
     width:18px;
     height: 18px;
     border-radius: 50%;
@@ -360,16 +381,18 @@
     background-color: #071018;
     z-index:3;
     transition: background-color 0.3s, border-color 0.3s;
+
+
     /* Animate marker when it's in the middle of the screen */
     animation: light-up linear forwards;
-    animation-timing-function: view();
+    animation-timeline: view();
     animation-range: contain 40% contain 60%;                               
     /* Nothing happens when it first appears | It animates near the center of the screen */
 
 }
 
 .timelineContent{
-    width: calc(50% -40px);                                 /*  box   80px(for line and marker)   box  */
+    width: calc(50% - 40px);                                 /*  box   80px(for line and marker)   box  */
     padding:2rem;
     background-color: rgba(15, 25, 40, 0.55);
     border-radius: 12px;
@@ -378,28 +401,33 @@
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     position: relative;
+    line-height: 1.5;
 
     /* Animate when in view */
     animation: fade-in-up linear forwards;
-    animation-timing-function: view();
+    animation-timeline: view();
     animation-range: entry 20% cover 50%;
 }
 
-.timelineSection:nth-child(even) .timelineContent {
-  text-align: left;
+.timelineSection:nth-child(odd) .timelineContent {
+    margin-right: auto;
 }
+
 
 .timelineYear{
     font-size: clamp(1rem, 2vw, 1.1rem);
     font-weight: 500;
     color: #ffffff;
-    /* margin-bottom */
+    margin-bottom: 0.75rem;
 
 }
 
-.timelineTitle{
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
-    font-weight:300;
+.timelineTitle {
+  font-size: clamp(1.5rem, 4vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  line-height: 1.2;
 }
 
 /* ANIMATIONS SPECIFIED */
@@ -429,7 +457,7 @@
     }
 }
 
-@keyframe fade-in-up{
+@keyframes fade-in-up{
     from{
         opacity:0;
         transform: translateY(50px) scale(0.95);
@@ -440,3 +468,56 @@
     }
 }
 
+                @media (max-width: 768px) {
+                .timeline-wrapper {
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+
+                .timeline-line {
+                    left: 20px;
+                    transform: none;
+                }
+
+                .timeline-marker {
+                    left: 20px;
+                    transform: none;
+                }
+
+                .timeline-section,
+                .timeline-section:nth-child(even) {
+                    justify-content: flex-start;
+                    padding-left: 40px;
+                }
+
+                .timeline-content,
+                .timeline-section:nth-child(even) .timeline-content {
+                    width: 100%;
+                    text-align: left;
+                }
+            }
+
+
+
+/* STATS AND ACHIEVEMENT SECTION */
+.statsSection{
+    min-height: 100vh;
+    background-image: url(images/white_bg.jpg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.statsSection h2{
+    font-size: 2.5rem;
+    font-family: 'Inter' , sans-serif;
+}
+
+.statsSection h3{
+    font-size: 2rem;
+    font-family: 'Playfair Display', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}

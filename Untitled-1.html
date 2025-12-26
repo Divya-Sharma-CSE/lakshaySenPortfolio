@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lakshya Sen</title>
-
-    <link rel="stylesheet" href="Untitled-1.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
-    
-
+  <meta charset="UTF-8" />
+  <title>Animated Pie Chart</title>
 </head>
+<body style="background:#071018; display:flex; justify-content:center; align-items:center; height:100vh;">
 
-<body>
-  <section class="layout">
-    <div class="left">
-      <h1>LAKSHYA SEN</h1>
-      <p>Professional Badminton Player</p>
-    </div>
+  <canvas id="winsChart" width="300" height="300"></canvas>
 
-    <div class="right">
-      <div class="marquee">
-        <div class="track">
-          <div class="item">TOTAL WINS 248</div>
-          <div class="item">CHAMPIONSHIPS 12</div>
-          <div class="item">WORLD RANK #1</div>
-          <div class="item">FOLLOWERS 3.4M</div>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-          <!-- duplicate -->
-          <div class="item">TOTAL WINS 248</div>
-          <div class="item">CHAMPIONSHIPS 12</div>
-          <div class="item">WORLD RANK #1</div>
-          <div class="item">FOLLOWERS 3.4M</div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <script src="Untitled-1.js"></script>
+  <script>
+    const ctx = document.getElementById('winsChart');
+
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Wins', 'Losses'],
+        datasets: [{
+          data: [226, 123],
+          backgroundColor: ['#4A90E2', '#1f2f44'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        cutout: '65%',
+        animation: {
+          animateRotate: true,
+          animateScale: true,
+          duration: 1200,
+          easing: 'easeOutQuart'
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#DCE0E8',
+              font: { size: 14 }
+            }
+          }
+        }
+      }
+    });
+  </script>
+
 </body>
 </html>
