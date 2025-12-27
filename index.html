@@ -220,7 +220,7 @@
             <h2 class="statsHeading">Match Performance</h2>
             <h3 class="statsHeading">Win-Loss Efficiency</h3>
             <div class="chartBox">
-                <canvas id="winsChart" width = "400" height="400"></canvas>         <!--Drawing Area for chart.js-->
+                <canvas id="winsChart" width = "300" height="300"></canvas>         <!--Drawing Area for chart.js-->
             </div>
             </section>
 
@@ -231,32 +231,50 @@
             <div class="chartBox">
             <canvas id="titlesChart" width="600" ></canvas>
             </div>
+            </section>
             
-            <!--
-                        
-            <div class="tableWrapper">
-                <table id="achievementsTable">
-                <thead>
-                    <tr>
-                    <th onclick="sortTable(0)">Year ⬍</th>
-                    <th onclick="sortTable(1)">Tournament ⬍</th>
-                    <th onclick="sortTable(2)">Result ⬍</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>2022</td><td>All England Open</td><td>Finalist</td></tr>
-                    <tr><td>2022</td><td>India Open</td><td>Winner</td></tr>
-                    <tr><td>2024</td><td>Paris Olympics</td><td>4th Place</td></tr>
-                    <tr><td>2021</td><td>World Championships</td><td>Bronze</td></tr>
-                </tbody>
-                </table>
-            </div>    -->
+            <!--Sortable Table-->
+            <section class="sortableTable">            
+                <div class="tableWrapper">
+                    <p>Click on the field names to sort</p>
+                    <table id="achievementsTable">
+                    <thead>
+                        <tr>
+                        <th onclick="sortTable(0)" class="tableHead">Year ⬍</th>
+                        <th onclick="sortTable(1)" class="tableHead">Tournament ⬍</th>
+                        <th onclick="sortTable(2)" class="tableHead">Result ⬍</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>2022</td><td>All England Open</td><td>Finalist</td></tr>
+                        <tr><td>2022</td><td>India Open</td><td>Winner</td></tr>
+                        <tr><td>2024</td><td>Paris Olympics</td><td>4th Place</td></tr>
+                        <tr><td>2021</td><td>World Championships</td><td>Bronze</td></tr>
+                    </tbody>
+                    </table>
+                </div>    
             </section>
         </section>
 
     </section>
 
-
+   <section class="gallery" id="gallery">
+        <div class="heading">
+            <div class="divider"></div>
+            Gallery
+            <div class="divider"></div>
+        </div>
+        <div class="p-arrow">        
+            <div class="gallery-area">
+                <img src="images/LS3hero.jpeg" alt="Lakshya">
+                <img src="images/BWF World Championships_ Onus on Lakshya Sen, HS Prannoy in PV Sindhu's Absence.jpeg" alt="Hermione before punching Draco">
+                <img src="images/LakshyaSen.jpeg" alt="Hermione raising her hand to answer">
+                <img src="images/Lakshya Sen Profile, Age, Height, Wife, Career, Wiki, Biography - The Biodiary.jpeg" alt="Hermione laughing in her yule ball dress">
+                <img src="images/LS6hero.jpg" alt="Hermione with Crookshanks in train to Hogwarts">
+            </div>
+            <p>Hover<br>Over<br>Me !<br><span class="arrow">⤸</span></p> 
+        </div>
+    </section>
 
 
     <!--SCRIPT-->

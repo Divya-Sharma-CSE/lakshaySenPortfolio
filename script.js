@@ -87,6 +87,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+let barChartCreated = false;
+
+const statsSection = document.getElementById('stats2');
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !barChartCreated) {
+                statsSection.classList.add('visible');
+
+                requestAnimationFrame(() => {
+                    createBarChart();
+                });
+
+                barChartCreated = true;
+            }
+        });
+    },
+    { threshold: 0.6 }
+);
+
+observer.observe(statsSection);
 
 function createBarChart() {
     const ctx = document.getElementById('titlesChart');
@@ -103,9 +124,10 @@ function createBarChart() {
             }]
         },
         options: {
-            responsive: true,
+            responsive: false,
+            maintainAspectRatio: false,
             animation: {
-                duration: 1500,
+                duration: 2000,
                 easing: 'easeOutQuart'
             },
             scales: {
@@ -117,26 +139,7 @@ function createBarChart() {
     });
 }
 
-let barChartCreated = false;
 
-const statsSection = document.getElementById('stats2');
-
-const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !barChartCreated) {
-                statsSection.classList.add('visible');
-                createBarChart();
-                barChartCreated = true; // prevent re-creation
-            }
-        });
-    },
-    {
-        threshold: 0.6   // 👈 60% visibility
-    }
-);
-
-observer.observe(statsSection);
 
 
 
