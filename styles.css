@@ -604,6 +604,7 @@
     width:100%;
     height:100%;
     object-fit: cover;
+    cursor: pointer;
     &:nth-of-type(2) {grid-column: 2 / span 2;}
     &:nth-of-type(3) {grid-column: 4 / span 4; grid-row: 1 / span 3;}
     &:nth-of-type(4) {grid-column: 1 / span 1; grid-row: 2 / span 2;}
@@ -684,5 +685,113 @@
   }
 }
 
+.gallery2 .heading{
+    font-family: "Playfair Display";
+    font-weight: 300;
+    font-style: italic;
+    font-size: 3.5rem;
+    color: #ced6e5;
+}
+
+/* FOOTER */
+.footer{
+    background-image: url(images/white_bg.jpg);
+    min-height:50vh;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}
+
+.footerContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:2rem;
+}
+
+.section2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:1000px;
+    place-items: center;
+    margin-top: 1rem;
+}
+
+.footerContainer li{
+    text-align: center;
+    list-style: none;
+}
+
+.footer h3 {
+    color: #011425;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 3rem;
+}
+
+.footer p,
+.footer a {
+  color: #334155;
+  font-size: 1.2rem;
+  
+}
+
+.footer a:hover {
+  color: #4A90E2;
+}
+
+.footerBrand{
+    padding:3rem;
+    border-right: 2px solid #071018;
+}
+
+.quickNav a, .social a{
+    text-decoration: none;
+}
+
+.quickNav p, .social p, .fanBox p{
+    font-family: Inter;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+form{
+    padding:1rem;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:0.7rem;
+}
+
+.fanBox p{
+    text-align: left;
+    margin-bottom: 0.1rem;
+}
+
+#text{
+    grid-column: 1 / span 2;
+    height: 150px;
+}
+
+#location{
+    grid-column: 1 / span 2;
+}
+
+#name , #mail, #location, #text {
+    padding:0.7rem 1rem;
+    background-color: #d6dbe5;
+    border: 1px solid #b7c5e1; 
+}
+
+.footerBottom{
+    border-top: 1px solid black;
+    padding:5px 15rem;
+    
+}
 
 
