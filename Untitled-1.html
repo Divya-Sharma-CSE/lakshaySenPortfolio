@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lakshya Sen</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Untitled-1.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
@@ -21,93 +21,44 @@
 
 </head>
 <body>
-<section class="statsAchievements" id="stats">
+<section class="gallerySection">
+  <div class="galleryGrid">
 
-  <h2 class="sectionTitle">Stats & Achievements</h2>
+    <img src="images/aussi.jpg"
+         class="galleryImg"
+         data-title="Paris Olympics 2024"
+         data-desc="Men’s Singles – Quarterfinal"
+         alt="Lakshya Sen Olympics">
 
-  <!-- VISUAL STAT CARDS -->
-  <div class="statsCards">
-    <div class="statCard">
-      <img src="icons/win.svg" alt="">
-      <h3 data-target="226">0</h3>
-      <p>Total Wins</p>
-    </div>
+    <img src="images/L1hero.jpeg"
+         class="galleryImg"
+         data-title="All England Open 2022"
+         data-desc="Finalist – Historic run"
+         alt="All England Open">
 
-    <div class="statCard">
-      <img src="icons/trophy.svg" alt="">
-      <h3 data-target="9">0</h3>
-      <p>International Titles</p>
-    </div>
+    <img src="images/LS1hero.jpg"
+         class="galleryImg"
+         data-title="Thomas Cup 2022"
+         data-desc="India’s first-ever Gold"
+         alt="Thomas Cup">
 
-    <div class="statCard">
-      <img src="icons/ranking.svg" alt="">
-      <h3 data-target="6">0</h3>
-      <p>Highest Ranking</p>
-    </div>
   </div>
-
-    <div class="chartBox">
-      <canvas id="titlesChart"></canvas>
-    </div>
-  </div>
-
-  <!-- SORTABLE TABLE -->
-  <div class="tableWrapper">
-    <table id="achievementsTable">
-      <thead>
-        <tr>
-          <th onclick="sortTable(0)">Year ⬍</th>
-          <th onclick="sortTable(1)">Tournament ⬍</th>
-          <th onclick="sortTable(2)">Result ⬍</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>2022</td><td>All England Open</td><td>Finalist</td></tr>
-        <tr><td>2022</td><td>India Open</td><td>Winner</td></tr>
-        <tr><td>2024</td><td>Paris Olympics</td><td>4th Place</td></tr>
-        <tr><td>2021</td><td>World Championships</td><td>Bronze</td></tr>
-      </tbody>
-    </table>
-  </div>
-
 </section>
 
+<div class="lightbox" id="lightbox">
+  <div class="lightboxContent">
+    <span class="lightboxClose">&times;</span>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
+    <img id="lightboxImg" src="" alt="">
+    
+    <div class="lightboxCaption">
+      <h3 id="lightboxTitle"></h3>
+      <p id="lightboxDesc"></p>
+    </div>
+  </div>
+</div>
 
-const titlesCtx = document.getElementById('titlesChart');
-
-new Chart(titlesCtx, {
-  type: 'bar',
-  data: {
-    labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
-    datasets: [{
-      label: 'Titles',
-      data: [1, 1, 1, 4, 1, 1],
-      backgroundColor: '#4A90E2'
-    }]
-  }
-});
-
-function sortTable(colIndex) {
-  const table = document.getElementById("achievementsTable");
-  const tbody = table.tBodies[0];
-  const rows = Array.from(tbody.rows);
-
-  const asc = table.dataset.sort !== "asc";
-  table.dataset.sort = asc ? "asc" : "desc";
-
-  rows.sort((a, b) => {
-    const A = a.cells[colIndex].innerText;
-    const B = b.cells[colIndex].innerText;
-    return asc ? A.localeCompare(B, undefined, {numeric:true}) 
-               : B.localeCompare(A, undefined, {numeric:true});
-  });
-
-  rows.forEach(row => tbody.appendChild(row));
-}
-</script>
+<script src="Untitled-1.js"></script>
 
 </body>
 </html>

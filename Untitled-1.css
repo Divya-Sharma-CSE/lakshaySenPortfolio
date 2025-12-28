@@ -1,82 +1,71 @@
-.statsAchievements {
-  background: #071018;
-  color: #DCE0E8;
-  padding: 12vh 2rem;
+/* LIGHTBOX OVERLAY */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 16, 24, 0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
-.sectionTitle {
-  text-align: center;
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  margin-bottom: 4rem;
+/* SHOW LIGHTBOX */
+.lightbox.active {
+  display: flex;
 }
 
-/* STAT CARDS */
-.statsCards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto 6rem;
+/* CONTENT */
+.lightboxContent {
+  position: relative;
+  max-width: 85vw;
+  max-height: 85vh;
+  animation: zoomIn 0.4s ease;
 }
 
-.statCard {
-  background: rgba(15, 25, 40, 0.55);
-  border: 1px solid rgba(180, 200, 255, 0.12);
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: center;
-  backdrop-filter: blur(12px);
-  transition: transform 0.3s ease;
-}
-
-.statCard:hover {
-  transform: translateY(-8px);
-}
-
-.statCard h3 {
-  font-size: 3rem;
-  color: #ffffff;
-}
-
-/* CHARTS */
-.chartsGrid {
-  max-width: 1000px;
-  margin: 0 auto 6rem;
-  display: grid;
-  gap: 4rem;
-}
-
-.chartBox {
-  width: 280px;
-  margin: auto;
-}
-
-/* TABLE */
-.tableWrapper {
-  max-width: 900px;
-  margin: auto;
-  overflow-x: auto;
-}
-
-table {
+/* IMAGE */
+.lightboxContent img {
   width: 100%;
-  border-collapse: collapse;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 
-th, td {
-  padding: 1rem;
-  text-align: left;
+/* CAPTION */
+.lightboxCaption {
+  text-align: center;
+  color: #fff;
+  margin-top: 1rem;
 }
 
-th {
+.lightboxCaption h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.lightboxCaption p {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* CLOSE BUTTON */
+.lightboxClose {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  font-size: 2rem;
+  color: #fff;
   cursor: pointer;
-  border-bottom: 2px solid rgba(255,255,255,0.2);
 }
 
-tr {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-tr:hover {
-  background: rgba(255,255,255,0.05);
+/* ANIMATION */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
